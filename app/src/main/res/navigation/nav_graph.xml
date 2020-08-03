@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/characterListFragment">
+
+    <fragment
+        android:id="@+id/generateCharacterFragment"
+        android:name="edu.mines.csci448.lab.samodelkin.ui.generate.GenerateCharacterFragment"
+        android:label="GenerateCharacter"
+        tools:layout="@layout/fragment_new_character">
+        <action
+            android:id="@+id/action_generateCharacterFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment"
+            app:popUpTo="@id/characterListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="edu.mines.csci448.lab.samodelkin.ui.detail.CharacterDetailFragment"
+        android:label="CharacterDetail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="characterId"
+            app:argType="java.util.UUID" />
+        <action
+            android:id="@+id/action_characterDetailFragment_to_characterListFragment"
+            app:destination="@id/characterListFragment"
+            app:popUpTo="@id/characterListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="edu.mines.csci448.lab.samodelkin.ui.list.CharacterListFragment"
+        android:label="CharacterList"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_characterListFragment_to_generateCharacterFragment"
+            app:destination="@id/generateCharacterFragment" />
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
+    </fragment>
+</navigation>
